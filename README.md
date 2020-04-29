@@ -14,3 +14,8 @@ Assuming that you have *Node.js* already installed follow these steps to install
 2. **That's it.** If you like to change the directory names & locations, don't forget to change the paths in `./config.js` also.
 
 ## Run
+- Build distribution files - `npm run build` or `gulp build`
+- Run development environment & build on changes - `npm run dev` or `gulp dev`
+- Clean distribution folder - `npm run clean` or `gulp clean`
+
+*To use `gulp` commands, you have to `npm install --global gulp-cli`.*
