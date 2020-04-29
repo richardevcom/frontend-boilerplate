@@ -1,35 +1,48 @@
 {
-    "name": "portfolio",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "gulp dev",
-        "build": "gulp build",
-        "clean": "gulp clean"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/thecodercoder/frontend-boilerplate.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/thecodercoder/frontend-boilerplate/issues"
-    },
-    "homepage": "https://github.com/thecodercoder/frontend-boilerplate#readme",
-    "devDependencies": {
-        "browser-sync": "^2.26.7",
-        "del": "^5.1.0",
-        "gulp": "^4.0.2",
-        "gulp-clean-css": "^4.3.0",
-        "gulp-concat": "^2.6.1",
-        "gulp-if": "^3.0.0",
-        "gulp-nunjucks-render": "^2.2.3",
-        "gulp-order": "^1.2.0",
-        "gulp-sass": "^4.1.0",
-        "gulp-sourcemaps": "^2.6.5",
-        "gulp-uglify": "^3.0.2"
-    },
-    "dependencies": {}
+  "name": "frontend-boilerplate",
+  "version": "1.0.1",
+  "description": "Easy to use boilerplate for your front-end project.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecodercoder/frontend-boilerplate.git"
+  },
+  "author": "richardev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thecodercoder/frontend-boilerplate/issues"
+  },
+  "homepage": "https://github.com/thecodercoder/frontend-boilerplate#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-nunjucks-render": "^2.2.3",
+    "gulp-order": "^1.2.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {},
+  "keywords": [
+    "frontend",
+    "boilerplate",
+    "gulp",
+    "browsersync",
+    "nunjucks",
+    "html",
+    "css",
+    "sass",
+    "js",
+    "template",
+    "minify"
+  ]
 }
