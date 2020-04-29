@@ -9,7 +9,7 @@ Boilerplate's main features:
 
 ## Install
 Assuming that you have *Node.js* already installed follow these steps to install this repository on your machine:
-1. `git clone https://github.com/richardevcom/frontend-boilerplate.git` - Clone this repository
+1. `git clone https://github.com/richardevcom/front-end-boilerplate.git` - Clone this repository
 2. `npm install` - Install node modules
 2. **That's it.** If you like to change the directory names & locations, don't forget to change the paths in `./config.js` also.
 
