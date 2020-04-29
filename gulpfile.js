@@ -1,71 +1,75 @@
-// Initialize modules
-// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
-const { src, dest, watch, series, parallel } = require('gulp');
-// Importing all the Gulp-related packages we want to use
-const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const config = require('./config')
+const { watch, src, dest, series, parallel } = require('gulp')
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-var replace = require('gulp-replace');
+const cleanCSS = require('gulp-clean-css')
+const uglify = require('gulp-uglify')
+const gulpif = require('gulp-if')
+const order = require("gulp-order")
+const sass = require('gulp-sass')
+const njk = require('gulp-nunjucks-render');
+const sourcemaps = require('gulp-sourcemaps')
+const browserSync = require('browser-sync').create();
 
-
-// File paths
-const files = { 
-    scssPath: 'app/scss/**/*.scss',
-    jsPath: 'app/js/**/*.js'
+function css() {
+    return src(config.css.src + config.css.glob)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cleanCSS())
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest(config.css.dist))
 }
 
-// Sass task: compiles the style.scss file into style.css
-function scssTask(){    
-    return src(files.scssPath)
-        .pipe(sourcemaps.init()) // initialize sourcemaps first
-        .pipe(sass()) // compile SCSS to CSS
-        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
-        .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-        .pipe(dest('dist')
-    ); // put final CSS in dist folder
-}
-
-// JS task: concatenates and uglifies JS files to script.js
-function jsTask(){
-    return src([
-        files.jsPath
-        //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
-        ])
+function js() {
+    return src(config.js.src + config.js.glob)
+        .pipe(order([
+            // '**/jquery*.js',
+            '**/*.js',
+            '**/all.js'
+        ]))
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(gulpif('!**/*.min.js', uglify({
+            compress: { hoist_funs: false }
+        })))
         .pipe(concat('all.js'))
-        .pipe(uglify())
-        .pipe(dest('dist')
-    );
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest(config.js.dist))
 }
 
-// Cachebust
-function cacheBustTask(){
-    var cbString = new Date().getTime();
-    return src(['index.html'])
-        .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
-        .pipe(dest('.'));
+function img() {
+    return src(config.img.src + config.img.glob)
+        .pipe(dest(config.img.dist))
 }
 
-// Watch task: watch SCSS and JS files for changes
-// If any change, run scss and js tasks simultaneously
-function watchTask(){
-    watch([files.scssPath, files.jsPath],
-        {interval: 1000, usePolling: true}, //Makes docker work
-        series(
-            parallel(scssTask, jsTask),
-            cacheBustTask
-        )
-    );    
+function html() {
+    return src(config.html.src + '/views' + config.html.glob)
+        .pipe(njk({
+            path: [
+                config.html.src + '/layouts',
+                config.html.src + '/views',
+            ]
+        }))
+        .pipe(dest(config.html.dist))
 }
 
-// Export the default Gulp task so it can be run
-// Runs the scss and js tasks simultaneously
-// then runs cacheBust, then watch task
-exports.default = series(
-    parallel(scssTask, jsTask), 
-    cacheBustTask,
-    watchTask
-);
+function cssWatch() {
+    watch(config.css.src + config.css.glob, series(css)).on('change', browserSync.reload);
+}
+
+function jsWatch() {
+    watch(config.js.src + config.js.glob, series(js)).on('change', browserSync.reload);
+}
+
+function imgWatch() {
+    watch(config.img.src + config.img.glob, series(img)).on('change', browserSync.reload);
+}
+
+function htmlWatch() {
+    watch(config.html.src + config.html.glob, series(html)).on('change', browserSync.reload);
+}
+
+function bs(cb) {
+    browserSync.init(config.browsersync);
+    cb();
+}
+
+exports.build = series(parallel(html, img, css, js), parallel(bs, htmlWatch, imgWatch, cssWatch, jsWatch))
