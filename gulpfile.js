@@ -9,6 +9,7 @@ const sass = require('gulp-sass')
 const njk = require('gulp-nunjucks-render');
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync').create();
+const del = require('del')
 
 function css() {
     return src(config.css.src + config.css.glob)
@@ -52,24 +53,29 @@ function html() {
 }
 
 function cssWatch() {
-    watch(config.css.src + config.css.glob, series(css)).on('change', browserSync.reload);
+    return watch(config.css.src + config.css.glob, series(css)).on('change', browserSync.reload);
 }
 
 function jsWatch() {
-    watch(config.js.src + config.js.glob, series(js)).on('change', browserSync.reload);
+    return watch(config.js.src + config.js.glob, series(js)).on('change', browserSync.reload);
 }
 
 function imgWatch() {
-    watch(config.img.src + config.img.glob, series(img)).on('change', browserSync.reload);
+    return watch(config.img.src + config.img.glob, series(img)).on('change', browserSync.reload);
 }
 
 function htmlWatch() {
-    watch(config.html.src + config.html.glob, series(html)).on('change', browserSync.reload);
+    return watch(config.html.src + config.html.glob, series(html)).on('change', browserSync.reload);
 }
 
-function bs(cb) {
-    browserSync.init(config.browsersync);
-    cb();
+function bs() {
+    return browserSync.init(config.browsersync);
 }
 
-exports.build = series(parallel(html, img, css, js), parallel(bs, htmlWatch, imgWatch, cssWatch, jsWatch))
+function cleanDist() {
+    return del(config.dist.base, { force: true });
+}
+
+exports.build = series(cleanDist, parallel(html, img, css, js))
+exports.dev = series(cleanDist, parallel(html, img, css, js), parallel(bs, htmlWatch, imgWatch, cssWatch, jsWatch))
+exports.clean = parallel(cleanDist)
