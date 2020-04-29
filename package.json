@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/thecodercoder/frontend-boilerplate.git"
   },
-  "author": "richardev",
+  "author": "richardev <hello@richardev.com> (https://www.richardev.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thecodercoder/frontend-boilerplate/issues"
