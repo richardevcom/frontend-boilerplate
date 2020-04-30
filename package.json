@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thecodercoder/frontend-boilerplate.git"
+    "url": "git+https://github.com/richardevcom/front-end-boilerplate.git"
   },
   "author": "richardevcom <hello@richardev.com> (https://www.richardev.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thecodercoder/frontend-boilerplate/issues"
+    "url": "https://github.com/thecodercoder/front-end-boilerplate/issues"
   },
-  "homepage": "https://github.com/thecodercoder/frontend-boilerplate#readme",
+  "homepage": "https://github.com/thecodercoder/front-end-boilerplate#readme",
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
