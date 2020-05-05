@@ -10,6 +10,7 @@ const njk = require('gulp-nunjucks-render');
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync').create();
 const del = require('del')
+const embedSvg = require('gulp-embed-svg');
 
 function css() {
     return src(config.css.src + config.css.glob)
@@ -23,7 +24,11 @@ function css() {
 function js() {
     return src(config.js.src + config.js.glob)
         .pipe(order([
-            // '**/jquery*.js',
+            '**/jquery*.js',
+            '**/popper*.js',
+            '**/bootstrap*.js',
+            '**/parallax*.js',
+            '**/webgl-bg*.js',
             '**/*.js',
             '**/all.js'
         ]))
@@ -48,6 +53,9 @@ function html() {
                 config.html.src + '/layouts',
                 config.html.src + '/views',
             ]
+        }))
+        .pipe(embedSvg({
+            root: 'src'
         }))
         .pipe(dest(config.html.dist))
 }
