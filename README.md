@@ -6,6 +6,7 @@ Boilerplate's main features:
 - **Gulp** - *for automated tasks*
 - **BrowserSync** - *for local development server*
 - **Nunjucks** - *for templating (HTML)*
+- **SVG embed** - *automated SVG export from `<img class="sprite" src="sprite.svg" />` to `<svg class="sprite">`*
 
 ## Install
 Assuming that you have *Node.js* already installed follow these steps to install this repository on your machine:
