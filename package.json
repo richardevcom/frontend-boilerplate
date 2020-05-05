@@ -1,48 +1,54 @@
 {
-  "name": "front-end-boilerplate",
-  "version": "1.0.1",
-  "description": "Easy to use boilerplate for your front-end project.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "gulp dev",
-    "build": "gulp build",
-    "clean": "gulp clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/richardevcom/front-end-boilerplate.git"
-  },
-  "author": "richardevcom <hello@richardev.com> (https://www.richardev.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/thecodercoder/front-end-boilerplate/issues"
-  },
-  "homepage": "https://github.com/thecodercoder/front-end-boilerplate#readme",
-  "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-if": "^3.0.0",
-    "gulp-nunjucks-render": "^2.2.3",
-    "gulp-order": "^1.2.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2"
-  },
-  "dependencies": {},
-  "keywords": [
-    "frontend",
-    "boilerplate",
-    "gulp",
-    "browsersync",
-    "nunjucks",
-    "html",
-    "css",
-    "sass",
-    "js",
-    "template",
-    "minify"
-  ]
+    "name": "front-end-boilerplate",
+    "version": "1.0.1",
+    "description": "Easy to use boilerplate for your front-end project.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "gulp dev",
+        "build": "gulp build",
+        "clean": "gulp clean"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/richardevcom/front-end-boilerplate.git"
+    },
+    "author": "richardevcom <hello@richardev.com> (https://www.richardev.com)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/thecodercoder/front-end-boilerplate/issues"
+    },
+    "homepage": "https://github.com/thecodercoder/front-end-boilerplate#readme",
+    "devDependencies": {
+        "browser-sync": "^2.26.7",
+        "del": "^5.1.0",
+        "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-embed-svg": "^1.2.0",
+        "gulp-if": "^3.0.0",
+        "gulp-nunjucks-render": "^2.2.3",
+        "gulp-order": "^1.2.0",
+        "gulp-sass": "^4.1.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify": "^3.0.2"
+    },
+    "dependencies": {
+        "bootstrap": "^4.4.1",
+        "jquery": "^3.5.0",
+        "parallax-js": "^3.1.0",
+        "popper.js": "^1.16.1"
+    },
+    "keywords": [
+        "frontend",
+        "boilerplate",
+        "gulp",
+        "browsersync",
+        "nunjucks",
+        "html",
+        "css",
+        "sass",
+        "js",
+        "template",
+        "minify"
+    ]
 }
