@@ -1,4 +1,4 @@
-# Front-end boilerplate
+# Front-end boilerplate (Gulp, Nunjucks, BrowserSync, SASS, SVG embed)
 
 Easy to use boilerplate for your front-end project.
 
